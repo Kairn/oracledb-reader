@@ -101,5 +101,7 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 
 ### Custom ###
-config.properties
-dump.json
+*.properties
+**/.properties/**
+*.json
+**/*.json/**
