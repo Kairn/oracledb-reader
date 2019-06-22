@@ -105,3 +105,6 @@ buildNumber.properties
 **/.properties/**
 *.json
 **/*.json/**
+*.sql
+**/*.sql/**
+*.log

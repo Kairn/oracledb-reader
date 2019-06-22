@@ -1,0 +1,15 @@
+########## Template for Configuration Properties ##########
+
+# First fill out all required fields
+# Then change the extension of this file and put it in the src/main/resources
+# Full file name should be config.properties
+
+# DB URL (inclduing service name, port, and client)
+url=
+# DB Username
+username=
+# DB Password for the above user
+password=
+
+# Output file directory (default to desktop)
+output=C:\Users\?\Desktop\
