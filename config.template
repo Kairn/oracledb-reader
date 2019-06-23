@@ -11,5 +11,12 @@ username=
 # DB Password for the above user
 password=
 
+# Input SQL directory & file
+input=C:\\Users\\?\\Desktop\\custom.sql
+# Linux
+#input=/home/?/Desktop/custom.sql
+
 # Output file directory (default to desktop)
-output=C:\Users\?\Desktop\
+output=C:\\Users\\?\\Desktop\\
+# Linux
+#output=/home/?/Desktop/

@@ -1,9 +1,9 @@
 package io.esoma.odbr;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.Writer;
 import java.sql.Connection;
@@ -36,8 +36,9 @@ public class Main {
 		handler.setLevel(Level.ALL);
 		logger.addHandler(handler);
 
-		// Output base path
-		String path = null;
+		// I/O base path
+		String inputPath = null;
+		String outputPath = null;
 
 		// Initialize Oracle driver
 		logger.fine(bannerFormat("Oracle Database Reader"));
@@ -62,7 +63,8 @@ public class Main {
 				in.close();
 			}
 
-			path = props.getProperty("output");
+			inputPath = props.getProperty("input");
+			outputPath = props.getProperty("output");
 		} catch (Exception e) {
 			logger.severe("Error in initialization. Printing stack trace...");
 			throw e;
@@ -77,17 +79,18 @@ public class Main {
 		}
 
 		// Check path
-		if (path == null) {
-			path = "";
+		if (inputPath == null) {
+			inputPath = "";
+		}
+		if (outputPath == null) {
+			outputPath = "";
 		}
 
 		// Read SQL script
 		String sqlStmt = null;
 
 		try {
-			ClassLoader cl = Thread.currentThread().getContextClassLoader();
-			InputStream in = cl.getResourceAsStream("custom.sql");
-			InputStreamReader reader = new InputStreamReader(in);
+			FileReader reader = new FileReader(inputPath);
 
 			StringBuilder sb = new StringBuilder();
 			int ch = 0;
@@ -95,13 +98,10 @@ public class Main {
 				sb.append((char) ch);
 			}
 			sqlStmt = sb.toString();
-			if (in != null) {
-				in.close();
-			}
+
 			if (reader != null) {
 				reader.close();
 			}
-
 		} catch (Exception e) {
 			logger.severe("Error in reading SQL script. Printing stack trace...");
 			throw e;
@@ -185,7 +185,7 @@ public class Main {
 		// Output JSON data to file
 		String fileName = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC) + ".json";
 		logger.fine("Creating output file " + fileName + "...");
-		File file = new File(path + fileName);
+		File file = new File(outputPath + fileName);
 		file.createNewFile();
 		Writer wr = new FileWriter(file);
 
