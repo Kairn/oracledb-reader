@@ -95,6 +95,10 @@ public class Main {
 			StringBuilder sb = new StringBuilder();
 			int ch = 0;
 			while ((ch = reader.read()) != -1) {
+				// Eliminate semicolons
+				if ((char) ch == ';') {
+					continue;
+				}
 				sb.append((char) ch);
 			}
 			sqlStmt = sb.toString();
