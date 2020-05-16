@@ -1,6 +1,6 @@
 # Oracle Database Reader
 
-Oracle Database Reader is a tool that can run any DQL query on a Oracle DB connection and output the result in a beautified JSON format. Although sometimes it is certainly useful to convert plain tabular data into JSON data that is consumable by most programming interfaces, the main purpose of this tool, however, is to bypass access restriction enabled with Oracle SQL Developer or other software. If you are a developer who has been granted read-only access to an organization's production database yet are still blocked from creating a connection through a high-level interface, this tool can help overcome the hurdle.
+Oracle Database Reader is a tool that can run any DQL query on a Oracle DB connection and output the result in a beautified JSON format. It is a convenient way of exporting tabular data from a database server when you only have access to low level connection methods.
 
 ***WARNING: Do NOT use this tool to run any DML or DDL statements as it will fail 99.99% of the cases. In the cases it does not fail it could lead to serious consequences if you are connected to an important database. Also, it has not been tested to work in all environments and scenarios.***
 
